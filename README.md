@@ -1,10 +1,15 @@
 # NACE service
 
-### Build
-Use `mvn clean install`
+## Features of project:
+* Possible build abd run with IntelliJ Idea
+* H2 in-memory database is used + H2 console to verify data. Used `data.sql` and `schema.sql` to initialize H2.
+* SWAGGER UI is used for user friendly calls
+* Caffeine cache is used to performance improvement
+* Java, SpringBoot, SpringBoot JPA, Spring Web and so on 
 
-### Run the class
-`NaceRunner`
+### Build and Run:
+Use `mvn clean install`
+And run the main class: `NaceRunner`
 
 ### SWAGGER UI:
 http://localhost:8080/swagger-ui/index.htm
