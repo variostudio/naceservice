@@ -6,6 +6,8 @@
 * SWAGGER UI is used for user friendly calls
 * Caffeine cache is used to performance improvement
 * Java, SpringBoot, SpringBoot JPA, Spring Web and so on 
+* Mock (`NaceServiceTest`) and integration test (`IntegrationTest`) in place
+* One executable JAR is building (`target/NaceService-1.jar`)
 
 ### Build and Run:
 Use `mvn clean install`
