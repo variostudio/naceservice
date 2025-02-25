@@ -1,17 +1,16 @@
 # NACE service
 
 ## Features of project:
-* Possible build abd run with IntelliJ Idea
-* H2 in-memory database is used + H2 console to verify data. Used `data.sql` and `schema.sql` to initialize H2.
+* Possible build abd run as with IntelliJ Idea as standalone JAR (`target/NaceService-1.jar`)
+* H2 in-memory database is used as main database + H2 console to verify data. Used `data.sql` and `schema.sql` to initialize H2. It is easy to change for any production-ready database.
 * SWAGGER UI is used for user friendly calls
-* Caffeine cache is used to performance improvement
+* Caffeine cache is used for performance improvement
 * Java, SpringBoot, SpringBoot JPA, Spring Web and so on 
-* Mock (`NaceServiceTest`) and integration test (`IntegrationTest`) in place
-* One executable JAR is building (`target/NaceService-1.jar`)
+* The Mock (`NaceServiceTest`) and the integration test (`IntegrationTest`) are in place. Integration test is used second H2 database.
 
 ### Build and Run:
 Use `mvn clean install`
-And run the main class: `NaceRunner`
+And run the main class: `NaceRunner` or run `target/NaceService-1.jar`
 
 ### SWAGGER UI:
 http://localhost:8080/swagger-ui/index.html
