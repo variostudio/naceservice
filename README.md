@@ -34,11 +34,11 @@ Example of JSON body:
     "level": 2,
     "code": "B",
     "parent": "A",
-    "description": "asdfg qwe tert fg",
-    "inc": "twret wretwe rt rwet wertw ert wert  fggsfg",
-    "also": "fgdfg",
+    "description": "some description",
+    "inc": "some includes",
+    "also": "also includes",
     "ref": "111.444",
-    "excl": "no",
+    "excl": "some excludes",
     "rulings": "r1"
 }
 ```
