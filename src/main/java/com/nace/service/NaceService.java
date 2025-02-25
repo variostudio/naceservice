@@ -17,7 +17,7 @@ public class NaceService {
 
     @Cacheable("nace")
     public NaceData getById(Long id) {
-        if (id == 0) {
+        if (id <= 0) {
             return null;
         } else {
             Optional<NaceEntity> nace = repository.findById(id);
