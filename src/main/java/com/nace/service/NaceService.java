@@ -17,7 +17,7 @@ public class NaceService {
 
     @Cacheable("nace")
     public NaceData getById(Long id) {
-        if (id <= 0) {
+        if (id == null || id < 0) {
             return null;
         } else {
             Optional<NaceEntity> nace = repository.findById(id);
@@ -33,8 +33,8 @@ public class NaceService {
     public NaceData save(NaceData data) {
         NaceEntity nace = ConversionUtil.toEntity(data);
 
-        repository.save(nace);
+        NaceEntity saved = repository.save(nace);
 
-        return data;
+        return ConversionUtil.toData(saved);
     }
 }

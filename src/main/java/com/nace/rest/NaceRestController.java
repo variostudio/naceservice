@@ -29,8 +29,8 @@ public class NaceRestController {
         return nace;
     }
 
-    @PostMapping (value = "/nace/api/orders/save")
-    public NaceData save(@RequestBody NaceData data) {
+    @PostMapping (value = "/nace/api/orders/persist")
+    public NaceData persist(@RequestBody NaceData data) {
         logger.debug("Saving: " + data);
         try {
             return service.save(data);

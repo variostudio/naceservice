@@ -6,8 +6,8 @@ import lombok.ToString;
 
 @Getter @Setter @ToString
 public class NaceData {
-    private long order;
-    private int level;
+    private Long order;
+    private Integer level;
     private String code;
     private String parent;
     private String description;

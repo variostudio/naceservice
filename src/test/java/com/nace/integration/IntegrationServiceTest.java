@@ -1,4 +1,4 @@
-package com.nace;
+package com.nace.integration;
 
 import com.nace.db.repository.NaceRepository;
 import com.nace.dto.NaceData;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class IntegrationTest {
+public class IntegrationServiceTest {
     @Autowired
     private NaceService service;
 
@@ -21,25 +21,23 @@ public class IntegrationTest {
 
     @Test
     public void saveLoadTest() {
-        long id = 1L;
-
         NaceData data = new NaceData();
-        data.setOrder(id);
         data.setLevel(1);
         data.setDescription("test descriptions");
 
         long cntBeforeSave = repository.count();
 
-        service.save(data);
+        NaceData saved = service.save(data);
 
         long cntAfterSave = repository.count();
 
         Assertions.assertEquals(cntBeforeSave + 1, cntAfterSave);
+        Assertions.assertNotNull(saved);
+        Assertions.assertNotNull(saved.getOrder());
 
-        NaceData loaded = service.getById(id);
+        NaceData loaded = service.getById(saved.getOrder());
         Assertions.assertNotNull(loaded);
 
-        Assertions.assertEquals(data.getOrder(), loaded.getOrder());
         Assertions.assertEquals(data.getLevel(), loaded.getLevel());
         Assertions.assertEquals(data.getDescription(), loaded.getDescription());
     }

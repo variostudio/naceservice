@@ -25,9 +25,25 @@ http://localhost:8080/actuator
 `GET localhost:8080/nace/api/orders/1`
 
 ### Save new URL:
-`POST localhost:8080/nace/api/orders/save`
+`POST localhost:8080/nace/api/orders/persist`
 
-Example of JSON body:
+Example of JSON body for saving new entity:
+```
+{
+    "level": 2,
+    "code": "B",
+    "parent": "A",
+    "description": "asdfg qwe tert fg",
+    "inc": "twret wretwe rt rwet wertw ert wert  fggsfg",
+    "also": "fgdfg",
+    "ref": "111.444",
+    "excl": "no",
+    "rulings": "r1"
+}
+```
+You will get the response with `order` assigned.
+
+To modify existing entity use JSON with `order` set.
 ```
 {
     "order": 1,

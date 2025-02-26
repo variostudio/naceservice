@@ -1,8 +1,6 @@
 package com.nace.db.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,10 +9,11 @@ import lombok.Setter;
 @Entity
 public class NaceEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private long order;
+    private Long order;
     @Column(name = "level_id")
-    private int level;
+    private Integer level;
     private String code;
     private String parent;
     private String description;

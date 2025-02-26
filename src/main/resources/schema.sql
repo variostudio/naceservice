@@ -1,1 +1,1 @@
-create table NACE_ENTITY (order_id BIGINT PRIMARY KEY, level_id integer, code varchar(5), parent varchar(5), description varchar(200), inc varchar(1000), also varchar(1000), rulings varchar(500), excl varchar(1000), ref varchar(50));
+create table NACE_ENTITY (order_id BIGINT generated always as IDENTITY PRIMARY KEY, level_id integer, code varchar(5), parent varchar(5), description varchar(200), inc varchar(1000), also varchar(1000), rulings varchar(500), excl varchar(1000), ref varchar(50));
