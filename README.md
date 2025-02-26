@@ -6,7 +6,7 @@
 * SWAGGER UI is used for user friendly calls
 * Caffeine cache is used for performance improvement
 * Java, SpringBoot, SpringBoot JPA, Spring Web and so on 
-* The Mock (`NaceServiceTest`) and the integration test (`IntegrationTest`) are in place. Integration test is used second H2 database.
+* The Mock (`NaceServiceTest`) and the integration test (`IntegrationControllerTest` and `IntegrationServiceTest`) are in place. Integration test is used second H2 database.
 
 ### Build and Run:
 Use `mvn clean install`
@@ -58,3 +58,8 @@ To modify existing entity use JSON with `order` set.
     "rulings": "r1"
 }
 ```
+
+### Integration tests
+Please run from IntelliJ Idea. Not included into `pom.xml`
+The integration tests are using separate H2 instance to test.
+Service test using real DB calls and Controller test is using real rest api calls.
