@@ -46,4 +46,37 @@ public class IntegrationControllerTest {
         Assertions.assertEquals(data.getLevel(), loaded.getLevel());
         Assertions.assertEquals(data.getDescription(), loaded.getDescription());
     }
+
+    @Test
+    public void modifyTest() {
+        NaceData data = new NaceData();
+        data.setLevel(1);
+        data.setDescription("test descriptions");
+
+        long cntBeforeSave = repository.count();
+
+        NaceData response = rest.postForObject("http://localhost:" + port + "/nace/api/orders/persist", data, NaceData.class);
+
+        long cntAfterSave = repository.count();
+
+        Assertions.assertEquals(cntBeforeSave + 1, cntAfterSave);
+        Assertions.assertNotNull(response);
+        Assertions.assertNotNull(response.getOrder());
+
+        NaceData loaded = rest.getForObject("http://localhost:" + port + "/nace/api/orders/" + response.getOrder(), NaceData.class);
+
+        Assertions.assertNotNull(loaded);
+
+        Assertions.assertEquals(data.getLevel(), loaded.getLevel());
+        Assertions.assertEquals(data.getDescription(), loaded.getDescription());
+
+        loaded.setDescription("another description");
+        rest.postForObject("http://localhost:" + port + "/nace/api/orders/persist", loaded, NaceData.class);
+
+        NaceData modified = rest.getForObject("http://localhost:" + port + "/nace/api/orders/" + response.getOrder(), NaceData.class);
+        Assertions.assertNotNull(modified);
+
+        Assertions.assertEquals(loaded.getLevel(), modified.getLevel());
+        Assertions.assertEquals(loaded.getDescription(), modified.getDescription());
+    }
 }
