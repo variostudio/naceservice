@@ -11,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Mono;
 
 import java.util.Optional;
 
@@ -27,16 +28,16 @@ public class NaceServiceTest {
         Long id = 1L;
         NaceEntity ent = new NaceEntity();
 
-        ent.setOrder(id);
+        ent.setOrd(id);
         ent.setRef("test ref");
         ent.setAlso("test also");
         ent.setRulings("test rulings");
         //....
 
-        Mockito.when(repository.findById(Mockito.eq(id))).thenReturn(Optional.of(ent));
+        Mockito.when(repository.findById(Mockito.eq(id))).thenReturn(Mono.just(ent));
 
-        NaceData data = service.getById(id);
-        Assertions.assertEquals(ent.getOrder(), data.getOrder());
+        NaceData data = service.getById(id).block();
+        Assertions.assertEquals(ent.getOrd(), data.getOrd());
         Assertions.assertEquals(ent.getRef(), data.getRef());
         Assertions.assertEquals(ent.getAlso(), data.getAlso());
         Assertions.assertEquals(ent.getRulings(), data.getRulings());
@@ -47,7 +48,7 @@ public class NaceServiceTest {
     void testGetByIdNotFound() {
         Long id = -1L;
 
-        NaceData data = service.getById(id);
+        NaceData data = service.getById(id).block();
 
         Assertions.assertNull(data);
     }

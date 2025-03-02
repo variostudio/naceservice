@@ -1,4 +1,4 @@
-# NACE service
+# NACE service - Reactive version
 
 ## Features of project:
 * Possible build abd run as with IntelliJ Idea as standalone JAR (`target/NaceService-1.jar`)

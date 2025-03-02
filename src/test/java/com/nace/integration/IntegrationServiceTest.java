@@ -25,17 +25,17 @@ public class IntegrationServiceTest {
         data.setLevel(1);
         data.setDescription("test descriptions");
 
-        long cntBeforeSave = repository.count();
+        long cntBeforeSave = repository.count().block();
 
-        NaceData saved = service.save(data);
+        NaceData saved = service.save(data).block();
 
-        long cntAfterSave = repository.count();
+        long cntAfterSave = repository.count().block();
 
         Assertions.assertEquals(cntBeforeSave + 1, cntAfterSave);
         Assertions.assertNotNull(saved);
-        Assertions.assertNotNull(saved.getOrder());
+        Assertions.assertNotNull(saved.getOrd());
 
-        NaceData loaded = service.getById(saved.getOrder());
+        NaceData loaded = service.getById(saved.getOrd()).block();
         Assertions.assertNotNull(loaded);
 
         Assertions.assertEquals(data.getLevel(), loaded.getLevel());

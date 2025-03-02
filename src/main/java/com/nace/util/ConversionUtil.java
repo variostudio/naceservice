@@ -6,7 +6,7 @@ import com.nace.dto.NaceData;
 public class ConversionUtil {
     public static NaceEntity toEntity(NaceData data) {
         NaceEntity entity = new NaceEntity();
-        entity.setOrder(data.getOrder());
+        entity.setOrd(data.getOrd());
         entity.setDescription(data.getDescription());
         entity.setCode(data.getCode());
         entity.setInc(data.getInc());
@@ -22,7 +22,7 @@ public class ConversionUtil {
 
     public static NaceData toData(NaceEntity entity) {
         NaceData data = new NaceData();
-        data.setOrder(entity.getOrder());
+        data.setOrd(entity.getOrd());
         data.setDescription(entity.getDescription());
         data.setCode(entity.getCode());
         data.setInc(entity.getInc());

@@ -1,18 +1,14 @@
 package com.nace.db.model;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
 @Getter
 @Setter
-@Entity
 public class NaceEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
-    private Long order;
-    @Column(name = "level_id")
+    private Long ord;
     private Integer level;
     private String code;
     private String parent;
