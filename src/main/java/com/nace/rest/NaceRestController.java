@@ -19,6 +19,8 @@ public class NaceRestController {
 
     @GetMapping (value="/nace/api/orders/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
     public NaceData getById(@PathVariable("id") Long id) {
+        logger.debug("Executed in thread: " + Thread.currentThread().getName());
+        logger.debug("This thread is virtual:  " + Thread.currentThread().isVirtual());
         logger.debug("Getting order by id: " + id);
         NaceData nace = service.getById(id);
 
